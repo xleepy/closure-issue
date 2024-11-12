@@ -2,6 +2,10 @@ import { useCallback, useState } from "react";
 import "./App.css";
 // trying to reproduce issue with https://www.schiener.io/2024-03-03/react-closures
 
+class BigObject {
+  public readonly data = new Uint8Array(1024 * 1024 * 10);
+}
+
 const MemoryExample = () => {
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
@@ -67,6 +71,7 @@ const WithoutCallbacksExample = () => {
 
 export const App = () => {
   return <MemoryExample />;
+
   // return <WithoutCallbacksExample />;
 };
 
